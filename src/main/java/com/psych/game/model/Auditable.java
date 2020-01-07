@@ -12,6 +12,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -25,6 +27,10 @@ import lombok.Setter;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value= {"createdAt","updatedAt"}, allowGetters = true)
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.StringIdGenerator.class,
+		property = "id"
+)
 public abstract class Auditable implements Serializable{
 
 	/**

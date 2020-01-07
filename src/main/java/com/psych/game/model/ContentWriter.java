@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,5 +17,5 @@ public class ContentWriter extends Employee{
     @ManyToMany
     @Getter
     @Setter
-    List<Question> editedQuestions;
+    List<Question> editedQuestions = new ArrayList<>();
 }
